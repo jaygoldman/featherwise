@@ -1,4 +1,6 @@
-# Featherwise
+# 🪶 Featherwise
+
+<img src="icons/icon128.png" width="72" align="right" alt="Featherwise icon" />
 
 A Manifest V3 Chrome extension that saves pages to **Readwise Reader** and text selections as **Readwise highlights** — designed to request the **minimum Chrome permissions possible**.
 
