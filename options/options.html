@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="options.css" />
+  <title>Featherwise — Settings</title>
+</head>
+<body>
+  <main>
+    <h1>Featherwise</h1>
+
+    <section>
+      <h2>Access token</h2>
+      <p class="muted">
+        Paste your token from
+        <a href="https://readwise.io/access_token" target="_blank" rel="noopener">readwise.io/access_token</a>.
+        It is stored locally in this extension and sent only to readwise.io.
+      </p>
+      <div class="row">
+        <input id="token" type="password" placeholder="Readwise access token" autocomplete="off" spellcheck="false" />
+        <button id="save" class="primary">Save &amp; validate</button>
+      </div>
+      <p id="tokenStatus" class="status" role="status"></p>
+    </section>
+
+    <section>
+      <h2>Full-page HTML capture</h2>
+      <p class="muted">
+        When off, saving sends only the page URL and Readwise fetches the article. Turn this on to send the
+        page's own HTML instead — needed for paywalled or logged-in pages. Enabling it grants this extension
+        the <code>scripting</code> permission, which it holds only while this is on.
+      </p>
+      <label class="toggle">
+        <input id="htmlCapture" type="checkbox" />
+        <span>Capture full page HTML when saving</span>
+      </label>
+      <p id="captureStatus" class="status" role="status"></p>
+    </section>
+
+    <section>
+      <h2>Keyboard shortcut</h2>
+      <p class="muted">
+        The default is <kbd>Ctrl/Cmd+Shift+S</kbd> to open the popup. Change it at
+        <code>chrome://extensions/shortcuts</code>.
+      </p>
+    </section>
+  </main>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

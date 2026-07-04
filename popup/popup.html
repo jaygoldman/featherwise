@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>Save to Readwise</title>
+</head>
+<body>
+  <!-- Shown when no token is stored yet -->
+  <section id="setup" class="view hidden">
+    <h1>Featherwise</h1>
+    <p class="muted">Add your Readwise access token to get started.</p>
+    <button id="openOptions" class="primary">Set up token</button>
+  </section>
+
+  <!-- Main save view -->
+  <section id="main" class="view hidden">
+    <h1>Save to Readwise</h1>
+    <p id="pageTitle" class="page-title" title=""></p>
+
+    <label for="tags">Tags <span class="muted">(comma-separated)</span></label>
+    <input id="tags" type="text" list="tagSuggestions" placeholder="e.g. research, to-read" autocomplete="off" />
+    <datalist id="tagSuggestions"></datalist>
+
+    <label for="location">Location</label>
+    <select id="location">
+      <option value="new">New</option>
+      <option value="later">Later</option>
+      <option value="archive">Archive</option>
+    </select>
+
+    <button id="savePage" class="primary">Save page</button>
+    <button id="saveHighlight" class="secondary hidden">Save selection as highlight</button>
+
+    <p id="status" class="status" role="status"></p>
+    <p id="mode" class="mode muted"></p>
+  </section>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
