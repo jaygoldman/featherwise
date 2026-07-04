@@ -12,10 +12,24 @@ async function getActiveTab() {
   return tab;
 }
 
-function setStatus(msg, kind) {
-  const s = el("status");
-  s.textContent = msg;
-  s.className = "status" + (kind ? " " + kind : "");
+let toastTimer = null;
+
+// kind: "" | "ok" | "err" | "busy". "busy" is sticky (spinner, no auto-dismiss);
+// terminal states slide away on their own.
+function showToast(msg, kind = "") {
+  const t = el("toast");
+  t.textContent = msg;
+  t.className = "toast show" + (kind ? " " + kind : "");
+  if (toastTimer) {
+    clearTimeout(toastTimer);
+    toastTimer = null;
+  }
+  if (kind !== "busy") {
+    const ms = kind === "err" ? 4000 : 2200;
+    toastTimer = setTimeout(() => {
+      t.className = "toast";
+    }, ms);
+  }
 }
 
 function parseTags() {
@@ -32,12 +46,12 @@ function busy(isBusy) {
 
 function reportError(e) {
   const msg = e instanceof ReadwiseError ? e.message : "Something went wrong. Check your connection.";
-  setStatus(msg, "err");
+  showToast(msg, "err");
 }
 
 async function savePage() {
   busy(true);
-  setStatus("Saving…");
+  showToast("Saving…", "busy");
   try {
     await saveDocument(await getToken(), {
       url: captured?.url || activeTab.url,
@@ -46,7 +60,7 @@ async function savePage() {
       tags: parseTags(),
       location: el("location").value,
     });
-    setStatus("Saved to Readwise ✓", "ok");
+    showToast("Saved to Readwise", "ok");
   } catch (e) {
     reportError(e);
   } finally {
@@ -57,14 +71,14 @@ async function savePage() {
 async function saveSelectionHighlight() {
   if (!captured?.selection) return;
   busy(true);
-  setStatus("Saving highlight…");
+  showToast("Saving highlight…", "busy");
   try {
     await saveHighlight(await getToken(), {
       text: captured.selection,
       title: captured.title || activeTab.title,
       source_url: captured.url || activeTab.url,
     });
-    setStatus("Highlight saved ✓", "ok");
+    showToast("Highlight saved", "ok");
   } catch (e) {
     reportError(e);
   } finally {
