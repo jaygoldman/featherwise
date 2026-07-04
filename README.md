@@ -1,4 +1,4 @@
-# 🪶 Featherwise
+# Featherwise
 
 <img src="icons/icon128.png" width="72" align="right" alt="Featherwise icon" />
 
