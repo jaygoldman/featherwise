@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Featherwise — save to Readwise
 // @namespace    https://github.com/jaygoldman/featherwise
-// @version      1.0.0
+// @version      1.1.0
 // @description  Save pages to Readwise Reader and text selections as highlights, from any page. Network-locked to readwise.io.
 // @author       Jay Goldman
 // @match        *://*/*
@@ -435,10 +435,14 @@
         closeOverlay();
         return;
       }
+      if (!(e.ctrlKey || e.metaKey) || !e.shiftKey) return;
       const key = (e.key || "").toLowerCase();
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && key === "s") {
+      if (key === "s") {
         e.preventDefault();
         openPagePanel();
+      } else if (key === "h") {
+        e.preventDefault();
+        doSaveHighlight();
       }
     },
     true

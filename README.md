@@ -52,10 +52,10 @@ For environments where **Tampermonkey is approved but custom extensions are not*
 
 **Install:** with Tampermonkey installed, open [`userscript/featherwise.user.js`](userscript/featherwise.user.js) (raw) and Tampermonkey will offer to install it. Then run **Featherwise settings…** from the Tampermonkey menu and paste your token from [readwise.io/access_token](https://readwise.io/access_token).
 
-**Use** (from the Tampermonkey menu, the right-click menu, or `Ctrl/Cmd+Shift+S`):
+**Use** — from the Tampermonkey menu, the right-click menu, or a keyboard shortcut:
 
-- **Save page to Readwise Reader** → an in-page panel for tags, location, and optional full-HTML capture.
-- **Save selection as highlight** → saves the current text selection.
+- **Save page to Readwise Reader** (`Ctrl/Cmd+Shift+S`) → an in-page panel for tags, location, and optional full-HTML capture.
+- **Save selection as highlight** (`Ctrl/Cmd+Shift+H`) → saves the current text selection.
 - **Featherwise settings…** → token, default location, and default HTML capture.
 
 **What IT reviews** — the metadata block declares the entire surface:
