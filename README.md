@@ -54,8 +54,8 @@ For environments where **Tampermonkey is approved but custom extensions are not*
 
 **Use** — from the Tampermonkey menu, the right-click menu, or a keyboard shortcut:
 
-- **Save page to Readwise Reader** (`Ctrl/Cmd+Shift+S`) → an in-page panel for tags, location, and optional full-HTML capture.
-- **Save selection as highlight** (`Ctrl/Cmd+Shift+H`) → saves the current text selection.
+- **Save page to Readwise Reader** (`Alt/Opt+Shift+S`) → an in-page panel for tags, location, and optional full-HTML capture.
+- **Save selection as highlight** (`Alt/Opt+Shift+H`) → saves the current text selection.
 - **Featherwise settings…** → token, default location, and default HTML capture.
 
 **What IT reviews** — the metadata block declares the entire surface:

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Featherwise — save to Readwise
 // @namespace    https://github.com/jaygoldman/featherwise
-// @version      1.1.0
+// @version      1.2.0
 // @description  Save pages to Readwise Reader and text selections as highlights, from any page. Network-locked to readwise.io.
 // @author       Jay Goldman
 // @match        *://*/*
@@ -435,12 +435,13 @@
         closeOverlay();
         return;
       }
-      if (!(e.ctrlKey || e.metaKey) || !e.shiftKey) return;
-      const key = (e.key || "").toLowerCase();
-      if (key === "s") {
+      // Alt+Shift+S / Alt+Shift+H. Match on e.code (physical key) so macOS
+      // Option dead-keys don't mangle the detection.
+      if (!e.altKey || !e.shiftKey || e.ctrlKey || e.metaKey) return;
+      if (e.code === "KeyS") {
         e.preventDefault();
         openPagePanel();
-      } else if (key === "h") {
+      } else if (e.code === "KeyH") {
         e.preventDefault();
         doSaveHighlight();
       }
